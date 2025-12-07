@@ -20,6 +20,7 @@ try:
     # 從 Streamlit secrets 讀取 API 金鑰
     api_key = st.secrets["GOOGLE_API_KEY"]
     genai.configure(api_key=api_key)
+
 except FileNotFoundError:
     st.error("錯誤：找不到 .streamlit/secrets.toml 檔案。")
     st.info("請在專案根目錄下建立 .streamlit 資料夾，並在其中建立 secrets.toml 檔案，然後填入您的 GOOGLE_API_KEY。")
@@ -30,8 +31,8 @@ except KeyError:
     st.stop()
 
 
-# 初始化 Gemini Pro Vision 模型
-model = genai.GenerativeModel('gemini-pro-vision')
+# 初始化 Gemini 模型
+model = genai.GenerativeModel('models/gemini-2.5-flash')
 
 # ----------------
 # 主應用程式
